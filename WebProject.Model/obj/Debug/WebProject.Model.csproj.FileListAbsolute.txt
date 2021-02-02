@@ -1,0 +1,51 @@
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.dll
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.pdb
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.csproj.CoreCompileInputs.cache
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.dll
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.pdb
+D:\SEIP\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\Web App Develop .Net\Desktop\New folder (3)\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\Web App Develop .Net\Desktop\New folder (3)\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\Web App Develop .Net\Desktop\New folder (3)\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.csproj.CoreCompileInputs.cache
+C:\Users\Web App Develop .Net\Desktop\New folder (3)\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\Web App Develop .Net\Desktop\New folder (3)\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.pdb
+D:\project\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.dll
+D:\project\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.pdb
+D:\project\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.csproj.CoreCompileInputs.cache
+D:\project\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.dll
+D:\project\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\mdash\Downloads\Compressed\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\mdash\Downloads\Compressed\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\mdash\Downloads\Compressed\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\mdash\Downloads\Compressed\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\BITM_Project_2\Category&Supplier\SecondProjectWork\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csproj.CoreCompileInputs.cache
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\Web App Develop .Net\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.pdb
+C:\Users\mdash\OneDrive\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csprojAssemblyReference.cache
+C:\Users\mdash\OneDrive\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.dll
+C:\Users\mdash\OneDrive\Desktop\In Class\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.pdb
+D:\Final Project\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.dll
+D:\Final Project\WebProject - Copy (2)\WebProject.Model\bin\Debug\WebProject.Model.pdb
+D:\Final Project\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.csproj.CoreCompileInputs.cache
+D:\Final Project\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.dll
+D:\Final Project\WebProject - Copy (2)\WebProject.Model\obj\Debug\WebProject.Model.pdb

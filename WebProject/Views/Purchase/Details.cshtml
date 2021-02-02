@@ -1,0 +1,135 @@
+﻿@model WebProject.Models.PurchaseViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post">
+        <div class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title" style="background-color:teal; padding: 7px; margin-bottom: 20px; color:white"><b>Purchase Header</b></div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col">
+                        @*<div class="col-md-6">*@
+                        <div class="form-group row">
+                            @Html.LabelFor(c => c.Date, "Date *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.Purchase.Date, new { disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(c => c.InvoiceNo, "Invoice No ", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.Purchase.InvoiceNo, new { disabled = "disabled" })
+                            </div>
+                        </div>
+                        @*</div>*@
+                        <div class="form-group row">
+                            @Html.LabelFor(c => c.SupplierId, "Supplier Name ", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.SupplierDetail.Name, new { disabled = "disabled" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title" style="background-color:teal; margin-bottom: 20px; color:white; padding: 7px; ">Purchase Details</div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                @Html.Label("itemCategoryID", "Category Name ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.CategoryDetail.Name, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemProductID", "Product Name ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.ProductDetail.Name, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemProductCode", "Product Code ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.ProductDetail.Code, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemMDate", "Manufactured date *", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.ManufacturedDate, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemEDate", "Expired Date ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.ExpireDate, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                @Html.Label("itemQuantity", "Quantity ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.Quantity, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemUPrice", "Unit Price (TK)", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.UnitPrice, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemTPrice", "Total Price (TK)", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.TotalPrice, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("itemMRP", "MRP (TK)", new { @class = "control-label col-md-4" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.MRP, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                @Html.Label("itemRemarks", "Remarks ", new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(x => x.PurchaseDetail.Remarks, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+@*<div class="col-md-4 col-md-offset-4">
+        <input type="submit" value="Submit" />
+    </div>*@
+            
+
+@section MyScript{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/PurchaseCreate.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/Checking.js"></script>
+
+}

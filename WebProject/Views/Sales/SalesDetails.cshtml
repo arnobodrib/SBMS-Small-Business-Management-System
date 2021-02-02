@@ -1,0 +1,74 @@
+﻿@model List<WebProject.Models.SalesViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+@{
+    var Master = Model.FirstOrDefault();
+
+}
+
+<br><br><label>SalesCode:@Master.SalesCode</label><br>
+<label>Customer:@Master.CustomerName</label><br>
+<label>Date:@Master.Date</label><br><br>
+
+<table>
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>ProductName</th>
+            <th>Quantity</th>
+            <th>MRP</th>
+            <th>TotalMRP</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@sale.ProductName</td>
+                <td>@sale.Quantity</td>
+                <td>@sale.MRP</td>
+                <td>@sale.TotalMRP</td>
+            </tr>
+
+
+        }
+        <tr>
+            <td colspan="4" style="text-align: right;font-weight:bold">Grand Total : </td>
+            <td>@Master.GrandTotal</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right;font-weight:bold">Discount Amount : </td>
+            <td>@Master.DiscountAmount</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right;font-weight:bold">Payable Amount : </td>
+            <td>@Master.PayableAmount</td>
+        </tr>
+    </tbody>
+</table>

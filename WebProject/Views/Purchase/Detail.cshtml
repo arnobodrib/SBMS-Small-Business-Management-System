@@ -1,0 +1,110 @@
+﻿@model WebProject.Models.PurchaseViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post">
+
+        <div class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title" style="background-color:teal; padding: 7px; margin-bottom: 20px; color:white"><b>Search PurchaseDetails</b></div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group row">
+                        <div class="col-md-2" >
+                            @Html.Label("itemSearch", "Search ", new { @class = "control-label col-md-4" })
+                        </div>
+                        <div class="col-md-8">
+                            @*<input id="itemSearch" type="text" name="Date">*@
+                            @Html.TextBoxFor(x => x.ItemSearch, Model.ItemSearch,new { id="itemSearch" ,@placeholder = " Code / Date / Invoice / Product / Category / Supplier ", style = "width:600px", @maxlength = "15" })
+                        </div>
+
+                        <div class="col-md-2">
+                            <input id="searchButton" type="submit" value="Search" disabled/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title" style="background-color:teal;  padding: 7px; margin-bottom: 20px; color:white">Added Purchase Details Items</div>
+                </div>
+                <table class="table table-border table-hover table-striped table-responsive">
+                    <tr>
+                        <td>SL</td>
+                        <td>Products(Code)</td>
+                        <td>Quantity</td>
+                        <td>UnitPrice</td>
+                        <td>TotalPrice</td>
+                        <td>MRP</td>
+                        <td>Remarks</td>
+                        <td></td>
+                        <td>See Details</td>
+                    </tr>
+
+                    @{
+                        int i = 1;
+                    }
+
+                    @foreach (var purchase in Model.PurchaseDetails)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>@purchase.PurchaseId</td>
+                            <td>@purchase.Quantity</td>
+                            <td>@purchase.UnitPrice</td>
+                            <td>@purchase.TotalPrice</td>
+                            <td>@purchase.MRP</td>
+                            <td>@purchase.Remarks</td>
+                            <td>@*@Html.ActionLink("Details", "Details", "Purchase", new { Id = purchase.Id }, null)*@</td>
+                            <td>@Html.ActionLink("Details", "Details", "Purchase", new { Id = purchase.Id }, new { target="_blank" })</td>
+                            <td>@*<input type="button" onclick="showPopup()" value="Details" />*@</td>
+                        </tr>
+                    }
+                </table>
+
+                <div id="divContaiPopup" title="Popup test" class="table-responsive" style="display:none">
+                    @{
+                        Html.RenderPartial("~/Views/Shared/Purchase/_PurchaseDetails.cshtml", Model);
+                    }
+                </div>
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+@section MyScript{
+    <script src="~/Scripts/jquery-1.8.0.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/PurchaseCreate.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/Checking.js"></script>
+
+    <script>
+        $("#itemSearch").change(function () {
+        var itemSearch = $("#itemSearch").val();
+
+            if (itemSearch == "") {
+                //alert("Search Box Can not be empty");
+                $("#searchButton").prop("disabled", true);
+            }
+            else {
+                $("#searchButton").prop("disabled", false);
+            }
+    });
+
+    </script>
+
+}

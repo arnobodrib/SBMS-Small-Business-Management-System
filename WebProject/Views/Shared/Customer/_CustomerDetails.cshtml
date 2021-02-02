@@ -1,0 +1,30 @@
+﻿@model WebProject.Models.CustomerViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>LoyaltyPoint</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+    @foreach (var customer in Model.Customers)
+    {
+    <tr>
+        <td>@(i++)</td>
+        <td>@customer.Code</td>
+        <td>@customer.Name</td>
+        <td>@customer.Address</td>
+        <td>@customer.Email</td>
+        <td>@customer.Contact</td>
+        <td>@customer.LoyaltyPoint</td>
+        <td>@Html.ActionLink("Edit", "Edit", "Customer", new { Id = customer.Id }, null)</td>
+    </tr>
+    }
+
+</table>

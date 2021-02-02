@@ -1,0 +1,67 @@
+﻿@model  WebProject.Models.StockViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@section MyStyle{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+
+
+<div>
+    <h2>Stock Report</h2>
+
+    <form method="post">
+        <table>
+
+            <tr>
+                <td>Category:</td>
+                <td>@Html.DropDownList("category", null, "--Select--", null)</td>
+                <td>StartDate:</td>
+                <td><input id="StartDate" type="date" name="StartDate" value=" @Model.PurchaseDate" /></td>
+            </tr>
+            <tr>
+                <td>Product:</td>
+                @*<td>@Html.DropDownList("product", null, "--Select--", null)</td>*@
+                <td>@Html.DropDownList("product", null, "--Select--", null)</td>
+                <td>EndDate:</td>
+                <td><input id="EndDate" type="date" name="EndDate" value="@Model.ExpireDate " /></td>
+                @*<td><input type="text" name="Name" value="@Model.Name" /></td>*@
+            </tr>
+
+            <tr></tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Search" /></td>
+            </tr>
+        </table>
+    </form>
+    @{
+        Html.RenderPartial("~/Views/Shared/Stock/_StockReportDetails.cshtml", Model);
+    }
+
+   
+
+
+
+

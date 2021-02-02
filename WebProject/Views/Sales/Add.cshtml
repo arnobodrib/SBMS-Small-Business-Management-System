@@ -1,0 +1,490 @@
+﻿@model WebProject.Models.SalesViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section MyStyle
+{
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    }
+    <div class="container">
+        <h3>SALES PAGE</h3>
+        @using (Html.BeginForm("Add", "Sales"))
+        {
+
+            <div class="row">
+                <br />
+                <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
+                <div class="form-horizontal">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Customer</div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+
+                                                <label for="CustomerId" class="control-label col-md-4">Customer</label>
+                                                <div class="col-md-8">
+                                                    @*@Html.DropDownList("Customer", null, "--Select--", new {@class="form-control"})*@
+                                                    @Html.DropDownListFor(s => s.CustomerId, Model.CustomerSelectListItems, "--Select--", new { @class = "form-control" })
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.Date, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    <input id="Date" type="date" class="form-control" name="Date" required>
+                                                    @Html.ValidationMessageFor(s => s.Date)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.LoyaltyPoint, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(s => s.LoyaltyPoint, new { @class = "form-control", @readonly = "readonly" })
+                                                    @Html.ValidationMessageFor(s => s.LoyaltyPoint)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-9">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-heading">Product</div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="CategoryId" class="control-label col-md-4">Category</label>
+                                                <div class="col-md-8">
+                                                    @*@Html.DropDownList("CategoryId", null, "--Select--", new { @class = "form-control" })*@
+                                                    @Html.DropDownListFor(s => s.CategoryId, Model.CategorySelectListItems, "--Select--", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Product" class="control-label col-md-4">Product</label>
+                                                <div class="col-md-8">
+                                                    <select id="Product" class="form-control">
+                                                        <option value="">--Select--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.AvailableQuantity, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(s => s.AvailableQuantity, new { @class = "form-control", @readonly = "readonly" })
+                                                    @Html.ValidationMessageFor(s => s.AvailableQuantity)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.Quantity, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(s => s.Quantity, new { @class = "form-control"})
+                                                    @Html.ValidationMessageFor(s => s.Quantity)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.MRP, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(s => s.MRP, new { @class = "form-control", @readonly = "readonly" })
+                                                    @Html.ValidationMessageFor(s => s.MRP)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(s => s.TotalMRP, new { @class = "control-label col-md-4" })
+                                                <div class="col-md-8">
+                                                    @Html.TextBoxFor(s => s.TotalMRP, new { @class = "form-control", @readonly = "readonly" })
+                                                    @Html.ValidationMessageFor(s => s.TotalMRP)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-8 col-md-4">
+                                                    <input type="button" id="addbutton" value="Add" class="btn btn-success" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div>
+                                    <table class="table table-bordered table-striped table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>
+                                                    @Html.LabelFor(s => s.ProductId)
+                                                </th>
+                                                <th>
+                                                    @Html.LabelFor(s => s.Quantity)
+                                                </th>
+                                                <th>
+                                                    @Html.LabelFor(s => s.MRP)
+                                                </th>
+                                                <th>
+                                                    @Html.LabelFor(s => s.TotalMRP)
+                                                </th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ProductDetailsTable"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="border border-primary">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        @Html.LabelFor(s => s.GrandTotal, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(s => s.GrandTotal, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(s => s.GrandTotal)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(s => s.Discount, new { @class = "control-label col-md-4" })
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(s => s.Discount, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(s => s.Discount)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(s => s.DiscountAmount, new { @class = "control-label col-md-5" })
+                                        <div class="col-md-7">
+                                            @Html.TextBoxFor(s => s.DiscountAmount, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(s => s.DiscountAmount)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(s => s.PayableAmount, new { @class = "control-label col-md-5" })
+                                        <div class="col-md-7">
+                                            @Html.TextBoxFor(s => s.PayableAmount, new { @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(s => s.PayableAmount)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="submit" id="submitButton" value="Submit" class="btn btn-primary" />
+                                </div>
+                                <div class="col-md-9">
+
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <h2>@ViewBag.Message</h2>
+                                    }
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
+            </div>
+
+
+        }
+    </div>
+    @section MyScript
+    {
+        <script>
+            $(document).ready(function () {
+
+                $("#submitButton").prop('disabled', true);
+
+                $("#addbutton").click(function () {
+                    addProductsInList();
+                    calculateGrandTotal();
+                    DiscountNPayAmountCalculation();
+                    $("#submitButton").prop('disabled', false);
+                    $("#Product").val("").change();
+                });
+
+
+                $("#CustomerId").change(function () {
+
+                    var customerId = $("#CustomerId").val();
+                    if (customerId === undefined || customerId.length == 0) {
+                        $("#LoyaltyPoint").val("");
+                        $("#Discount").val("");
+                        return;
+                    }
+                    var jsonRequestData = { customerId: customerId }
+                    $.ajax({
+                        url: "/Sales/GetLPointByCustomerId",
+                        type: "POST",
+                        data: jsonRequestData,
+                        success: function (data) {
+                            $("#LoyaltyPoint").val(data.LoyaltyPoint);
+                            $("#Discount").val(Math.round((data.LoyaltyPoint) / 10));
+                        },
+                        error: function () {
+                            alert("LPoint load by ajax failed.");
+                        }
+                    });
+                });
+
+
+                $("#CategoryId").change(function () {
+
+                    var categoryId = $("#CategoryId").val();
+                    if (categoryId === undefined || categoryId.length == 0) {
+                        $("#Product").empty();
+                        $("#Product").append('<option value="">--Select--</option>');
+                        return;
+                    }
+                    var jsonRequestData = { categoryId: categoryId }
+                    $.ajax({
+                        url: "/Sales/GetProductByCategoryId",
+                        type: "POST",
+                        data: jsonRequestData,
+                        success: function (data) {
+                            $("#Product").empty();
+                            $("#Product").append('<option value="">--Select--</option>');
+                            $.each(data, function (key, value) {
+
+                                $("#Product").append('<option value="' + value.Id + '">' + value.Name + '</option>');
+                            });
+                        },
+                        error: function () {
+                            alert("product load failed when select category.");
+                        }
+                    });
+                });
+
+                $("#Product").change(function () {
+
+                    var productId = $("#Product").val();
+                    if (productId === undefined || productId.length == 0) {
+                        $("#AvailableQuantity").val("0");
+                        $("#MRP").val("0");
+                        $("#Quantity").val("0");
+                        $("#TotalMRP").val("0");
+                        return;
+                    }
+
+                    var soldQnt = GetSoldQuantity(productId);
+
+                    var jsonRequestData = { productId: productId }
+                    $.ajax({
+                        url: "/Sales/GetQntNMRPByProductId",
+                        type: "POST",
+                        data: jsonRequestData,
+                        success: function (data) {
+
+                            $("#AvailableQuantity").val((data.AvailableQnty) - soldQnt).change();
+                            $("#MRP").val(data.MRP);
+
+                        },
+                        error: function () {
+                            alert("Qnt and MRP load by ajax failed.");
+                        }
+                    });
+                });
+
+                function GetSoldQuantity(productId) {
+                    var sum = 0;
+                    $('#ProductDetailsTable tr').each(function () {
+
+                        var TblProductId = $(this).find("input[type='hidden'][id^='product']").val();
+                        var quantity = $(this).find("input[type='hidden'][id^='quantity']").val();
+                            
+                            if (TblProductId == productId) {
+                                    sum += parseFloat(quantity);
+                                    //return false;
+                                }
+                    });
+
+                    return sum;
+
+                }
+
+                $("#AvailableQuantity").change(function () {
+                    var productId = $("#Product").val();
+                    if (productId === undefined || productId.length == 0) {
+                        $("#AvailableQuantity").val("");
+                        $("#MRP").val("");
+                        return;
+                    }
+                    var jsonRequestData = { productId: productId }
+                    $.ajax({
+                        url: "/Sales/GetReorderLevel",
+                        type: "POST",
+                        data: jsonRequestData,
+                        success: function (data) {
+                            var availableQuantity = $("#AvailableQuantity").val();
+                            if (availableQuantity < data) {
+                                alert(" Available quantity goes below the Reorder level ");
+                            }
+
+                        },
+                        error: function () {
+                            alert("check reorderlevel by ajax failed.");
+                        }
+                    });
+
+
+                });
+
+                $("#Quantity").keydown(function (event) {
+
+                    if (event.shiftKey == true) {
+                        event.preventDefault();
+                    }
+
+                    if ((event.keyCode >= 48 && event.keyCode <= 57) ||
+                        (event.keyCode >= 96 && event.keyCode <= 105) ||
+                        event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
+                        event.keyCode == 39 || event.keyCode == 46) {
+
+                    } else {
+                        event.preventDefault();
+                    }
+
+                });
+
+                $("#Quantity").change(function () {
+
+                    var quantity = $("#Quantity").val();
+                    var mrp = $("#MRP").val();
+                    if (mrp === undefined || mrp.length == 0) {
+                        alert("please select a product before put quantity");
+                        return;
+                    }
+                    var AvailableQuantity = $("#AvailableQuantity").val();
+                    var newAvlQnt = (AvailableQuantity - quantity);
+                    if (newAvlQnt < 0) {
+
+                        alert("Quantity can not be more than Available Quantity");
+                        $("#AvailableQuantity").val(AvailableQuantity);
+                        $("#Quantity").val(0);
+                        $("#TotalMRP").val(0);
+                    }
+                    else {
+
+                        $("#AvailableQuantity").val(newAvlQnt).change();
+                        var totalMRP = quantity * mrp;
+                        $("#TotalMRP").val(totalMRP);
+                    }
+                   
+                });
+
+
+                function addProductsInList() {
+
+                    var getProducts = getProductsFromTextBox();
+
+                    if (getProducts === undefined || getProducts == null) {
+                        return;
+                    }
+
+
+                    var index = $("#ProductDetailsTable").children("tr").length;
+
+                    var sl = index;
+                    var indexCell = "<td style='display:none'><input type='hidden' id='index" + index + "' name='SalesDetails.index' value='" + index + "' /></td>";
+                    var slCell = "<td>" + (++sl) + "</td>";
+                    var productCell = "<td><input type='hidden' id='product" + index + "' name='SalesDetails[" + index + "].ProductId' value='" + getProducts.ProductId + "'/>" + getProducts.Product + "</td>";
+                    var quantityCell = "<td><input type='hidden' id='quantity" + index + "' name='SalesDetails[" + index + "].Quantity' value='" + getProducts.Quantity + "' />" + getProducts.Quantity + "</td>";
+                    var MRPCell = "<td><input type='hidden' id='mrp" + index + "' name='SalesDetails[" + index + "].mrp' value='" + getProducts.MRP + "' />" + getProducts.MRP + "</td>";
+                    var TotalMRPCell = "<td id='totalmrp'><input type='hidden' id='totalmrp" + index + "' name='SalesDetails[" + index + "].TotalMRP' value='" + getProducts.TotalMRP + "' />" + getProducts.TotalMRP + "</td>";
+
+                    var ActionCell = "<td><a id='editCell'>Edit/</a><a id='deleteCell'>Delete</a></td>";
+                   
+                    var createRow = "<tr>" + indexCell + slCell + productCell + quantityCell + MRPCell + TotalMRPCell + ActionCell + "</tr>";
+                    $("#ProductDetailsTable").append(createRow);
+
+                }
+
+
+                function getProductsFromTextBox() {
+
+                    var customerId = $("#CustomerId").val();
+                    var categoryId = $("#CategoryId").val();
+                    var product = $("#Product option:selected").text();
+                    var productId = $("#Product").val();
+                    var quantity = $("#Quantity").val();
+                    var mrp = $("#MRP").val();
+                    var totalmrp = quantity * mrp;
+
+                    if (customerId === undefined || customerId.length == 0) {
+                        alert('Please Select a Customer');
+                        return;
+                    }
+
+                    if (categoryId === undefined || categoryId.length == 0) {
+                        alert('Please Select a Category');
+                        return;
+                    }
+
+                    if (productId === undefined || productId.length == 0) {
+                        alert('Please select product');
+                        return;
+                    }
+
+                    if (quantity === undefined || quantity.length == 0 || quantity==0) {
+                        alert('Please enter product quantity');
+                        return;
+                    }
+
+
+                    var product = {
+
+                        "Product": product,
+                        "ProductId": productId,
+                        "Quantity": quantity,
+                        "MRP": mrp,
+                        "TotalMRP": totalmrp,
+                    }
+                    return product;
+                }
+
+                function calculateGrandTotal() {
+                    var sum = 0;
+                    $('#ProductDetailsTable tr').each(function () {
+
+                        var totalmrp = $(this).find("td[id='totalmrp']").text();
+                        if (!isNaN(totalmrp) && totalmrp.length !== 0) {
+                            sum += parseFloat(totalmrp);
+                        }
+                    });
+
+                    $("#GrandTotal").val(sum);
+
+                }
+
+                function DiscountNPayAmountCalculation() {
+
+                    var GrandTotal = $("#GrandTotal").val();
+                    var Discount = $("#Discount").val();
+                    var DiscountAmount = (GrandTotal * Discount) / 100;
+                    $("#DiscountAmount").val(DiscountAmount.toFixed(2));
+                    $("#PayableAmount").val((GrandTotal - DiscountAmount).toFixed(2));
+
+
+
+                }
+
+            });
+        </script>
+
+    }
+

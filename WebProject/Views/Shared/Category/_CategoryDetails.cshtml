@@ -1,0 +1,22 @@
+﻿@model WebProject.Models.CategoryViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+    @foreach (var category in Model.Categories)
+    {
+        <tr class="Search">
+            <td>@(i++)</td>
+            <td>@category.Code</td>
+            <td>@category.Name</td>
+            <td>@Html.ActionLink("Edit","Edit","category", new { Id = category.Id},null)</td>
+        </tr>
+    }
+
+</table>

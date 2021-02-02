@@ -1,0 +1,85 @@
+﻿@model List<WebProject.Models.SalesViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+<br /><br /><div class="container">
+
+
+    <div class="container">
+        @using (Html.BeginForm("SalesSearch", "Sales"))
+        {
+            <div class="row">
+                <div class="col-md-2 text-lg-left"><label>From Date</label></div>
+                <div class="col-md-3">
+                    <input id="StartDate" type="date" class="form-control" name="StartDate" required>
+                </div>
+
+                <div class="col-md-2"><label>To Date</label></div>
+                <div class="col-md-3">
+                    <input id="EndDate" type="date" class="form-control" name="EndDate" required>
+                </div>
+
+                <div class="col-md-2">
+                    <input type="Submit" value="Search" class="btn btn-primary form-control" />
+                </div>
+                <br /><br />
+            </div>
+        }
+    </div>
+
+
+</div>
+<br />
+<table>
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>SalesCode</th>
+            <th>CustomerName</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@sale.SalesCode</td>
+                <td>@sale.CustomerName</td>
+                <td>@sale.Date</td>
+                <td>
+                    @Html.ActionLink("Details","SalesDetails","Sales",new { Id = sale.SalesMasterId }, null )
+                </td>
+            </tr>
+            
+
+        }
+    </tbody>
+</table>
+
+

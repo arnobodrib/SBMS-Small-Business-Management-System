@@ -1,0 +1,34 @@
+﻿@model WebProject.Models.SalesReportViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Date</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Soldqnty</th>
+        <th>CP</th>
+        <th>SalesPrice</th>
+        <th>Profit</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+    @foreach (var saleReport in Model.SalesReport)
+    {
+        <tr>
+            <td>@(i++)</td>
+            <td>@saleReport.Date</td>
+            <td>@saleReport.Code</td>
+            <td>@saleReport.Name</td>
+            <td>@saleReport.Category</td>
+            <td>@saleReport.Soldqnty</td>
+            <td>@saleReport.CP</td>
+            <td>@saleReport.SalesPrice</td>
+            <td>@saleReport.Profit</td>
+
+
+        </tr>
+    }
+
+</table>

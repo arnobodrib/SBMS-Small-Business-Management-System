@@ -1,0 +1,166 @@
+﻿
+@model WebProject.Models.PurchaseViewModel
+
+@*<table class="table table-striped table-hover3">*@
+@*<table >
+        <tr>
+            <td>SL</td>
+            <td>Products(Code)</td>
+            <td>ManufacturedDate</td>
+            <td>ExpireDate</td>
+            <td>Quantity</td>
+            <td>UnitPrice</td>
+            <td>TotalPrice</td>
+            <td>MRP</td>
+            <td>Remarks</td>
+        </tr>
+
+        @{
+            int i = 1;
+        }
+
+        @foreach (var purchase in Model.PurchaseDetails)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@purchase.PurchaseId</td>
+                <td>@purchase.ManufacturedDate</td>
+                <td>@purchase.ExpireDate</td>
+                <td>@purchase.Quantity</td>
+                <td>@purchase.UnitPrice</td>
+                <td>@purchase.TotalPrice</td>
+                <td>@purchase.MRP</td>
+                <td>@purchase.Remarks</td>
+            </tr>
+        }
+    </table>*@
+
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title" style="background-color:teal; padding: 7px; margin-bottom: 20px; color:white"><b>Purchase Header</b></div>
+        </div>
+        <div class="panel-body">
+
+            <div class="col">
+                @*<div class="col-md-6">*@
+                <div class="form-group row">
+                    @Html.LabelFor(c => c.Date, "Date *", new { @class = "control-label col-md-4" })
+                    <div class="col-md-4">
+                        <input id="itemDate" type="text" name="Date" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(c => c.InvoiceNo, "Invoice No *", new { @class = "control-label col-md-4" })
+                    <div class="col-md-4">
+                        <input id="itemInvoiceNo" type="text" name="InvoiceNo" disabled>
+                    </div>
+                </div>
+                @*</div>*@
+                <div class="form-group row">
+                    @Html.LabelFor(c => c.SupplierId, "Supplier Id *", new { @class = "control-label col-md-4" })
+                    <div class="col-md-4">
+                        <input id="itemSupplierId" type="text" name="SupplierId" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title" style="background-color:teal; margin-bottom: 20px; color:white; padding: 7px; ">Purchase Details</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        @Html.Label("itemCategoryID", "Category ID *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemCategoryID" type="text" name="CategoryID" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemProductID", "Product ID *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemProductID" type="text" name="ProductID" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemProductCode", "Product Code ", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemProductCode" type="text" onkeypress='validate(event)' disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemAQuantity", "Available Quantity ", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemAQuantity" type="text" onkeypress='validate(event)' disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemMDate", "Manufactured date *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemMDate" type="text" name="Date" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemEDate", "Expired Date *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemEDate" type="text" name="Date" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        @Html.Label("itemQuantity", "Quantity *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemQuantity" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemUPrice", "Unit Price (TK)", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemUPrice" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemTPrice", "Total Price (TK)", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemTPrice" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemPUPrice", "Previous Unit Price (TK)", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemPUPrice" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemPMRP", "Previous MRP (TK)", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemPMRP" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("itemMRP", "MRP (TK)", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemMRP" type="text" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                    @Html.Label("itemRemarks", "Remarks ", new { @class = "control-label col-md-4" })
+                <div class="col-md-6">
+                    <input id="itemRemarks" type="text" disabled />
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>

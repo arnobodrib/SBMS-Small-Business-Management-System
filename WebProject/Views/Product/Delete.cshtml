@@ -1,0 +1,89 @@
+﻿@model WebProject.Models.ProductViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle{
+    <style>
+        table {
+            font-family: Arial,sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+
+
+
+<div>
+    <h2>Product Information/Details</h2>
+    <form method="post">
+        <table>
+            <tr>
+                <td>CategoryCode</td>
+                @*<td><input type="text" name="CategoryCode" value="@Model.CategoryCode"></td>*@
+            <td>@Html.DropDownListFor(c => c.CategoryId, Model.CategorySelectListItems, "--Select--", new { id = "CategoryId" })</td>
+                @*<td>@Html.DropDownList(c=>c.CategoryCode,Model.CategorySelectListItems,"--Select--")</td>*@
+                <td>@Html.ValidationMessageFor(c => c.Code)</td>
+            </tr>
+            <tr>
+                <td>Code</td>
+                <td><input type="text" name="Code" value="@Model.Code" readonly></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="Name" value="@Model.Name" readonly></td>
+                <td></td>
+            </tr>
+            @*<tr>
+                <td>UnitPrice</td>
+                <td><input type="text" name="UnitPrice" value="@Model.UnitPrice" readonly></td>
+                <td></td>
+            </tr>*@
+            <tr>
+                <td>Recorder_Level</td>
+                <td><input type="text" name="Recorder_Level" value="@Model.Recorder_Level" readonly></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="Description" value="@Model.Description" readonly></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Delete"></td>
+                <td>
+                    @if (ViewBag.Message != "")
+                    {
+                        <h3>
+                            <b>@ViewBag.Message</b>
+                        </h3>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    @{
+        Html.RenderPartial("~/Views/Shared/Product/_ProductDetails.cshtml", Model);
+    }
+</div>
+
+@section MyScript{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

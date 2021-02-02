@@ -1,0 +1,168 @@
+﻿
+@model WebProject.Models.CustomerViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+
+    <div>
+        <h2>Add Customer</h2>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Code)</td>
+                    <td>@Html.TextBoxFor(x => x.Code, Model.Code)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Code)<label id="codeError"></label></td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td>@Html.TextBoxFor(x => x.Name, Model.Name)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Address)</td>
+                    <td>@Html.TextBoxFor(x => x.Address, Model.Address)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Address)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Email)</td>
+                    <td>@Html.TextBoxFor(x => x.Email, Model.Email)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Email)<label id="emailError"></label></td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Contact)</td>
+                    <td>@Html.TextBoxFor(x => x.Contact, Model.Contact)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Contact)<label id="contactError"></label></td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.LoyaltyPoint)</td>
+                    <td>@Html.TextBoxFor(x => x.LoyaltyPoint, Model.LoyaltyPoint)</td>
+                    <td>@Html.ValidationMessageFor(c => c.LoyaltyPoint)</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h2>@ViewBag.Message</h2>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </form>
+        @{
+            Html.RenderPartial("~/Views/Shared/Customer/_CustomerDetails.cshtml", Model);
+        }
+        
+    </div>
+
+@section MyScript
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Code").focusout(function () {
+                
+                var code = $("#Code").val();
+
+                var jsonRequesData = { code: code };
+
+                $.ajax({
+                    url: "/Customer/IsCodeExist",
+                    type: "POST",
+                    data: jsonRequesData,
+                    success: function (data) {
+                        //alert("Ajax Requiest Success");
+                        $("#codeError").text("");
+                        if (data === true) {
+                            $("#codeError").text("Code Already Exists");
+                           $("#Code").focus();
+                        }
+
+                    },
+                    error: function () {
+                        alert("Ajax Requiest Error to test unique code");
+                    }
+                });
+            });
+
+            $("#Email").focusout(function () {
+
+                var email = $("#Email").val();
+
+                var jsonRequesData = { email: email };
+
+                $.ajax({
+                    url: "/Customer/IsEmailExist",
+                    type: "POST",
+                    data: jsonRequesData,
+                    success: function (data) {
+                        //alert("Ajax Requiest Success");
+                        $("#emailError").text("");
+                        if (data === true) {
+                            $("#emailError").text("Email Already Exists");
+                            $("#Email").focus();
+                        }
+
+                    },
+                    error: function () {
+                        alert("Ajax Requiest Error to test unique Email");
+                    }
+                });
+            });
+
+            $("#Contact").focusout(function () {
+
+                var contact = $("#Contact").val();
+
+                var jsonRequesData = { contact: contact };
+
+                $.ajax({
+                    url: "/Customer/IsContactExist",
+                    type: "POST",
+                    data: jsonRequesData,
+                    success: function (data) {
+                        //alert("Ajax Requiest Success");
+                        $("#contactError").text("");
+                        if (data === true) {
+                            $("#contactError").text("Contact Already Exists");
+                            $("#Contact").focus();
+                        }
+
+                    },
+                    error: function () {
+                        alert("Ajax Requiest Error to test unique Contact");
+                    }
+                });
+            });
+
+        });
+    </script>
+}

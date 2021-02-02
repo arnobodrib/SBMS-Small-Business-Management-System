@@ -1,0 +1,101 @@
+﻿@model WebProject.Models.CustomerViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+@*<br /><br />*@
+@*<div class="container">
+    
+        
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            <input type="text" id="Search" placeholder="Search" class="form-control" />
+                        </div>
+                    </div>
+                   </div>
+                    <div class="col-md-7">
+                    </div>
+                </div>
+            
+    
+</div>*@
+<br />
+<table>
+    <thead>
+        <tr>
+            <th>Sl</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>LoyaltyPoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var customer in Model.Customers)
+        {
+            <tr class="Search">
+                <td>@(i++)</td>
+                <td>@customer.Code</td>
+                <td>@customer.Name</td>
+                <td>@customer.Address</td>
+                <td>@customer.Email</td>
+                <td>@customer.Contact</td>
+                <td>@customer.LoyaltyPoint</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section MyScript
+    {
+    <script>
+        $(document).ready(function () {
+
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searhText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+
+                    if (!Contains($(this).text().toLowerCase(), searhText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+
+            });
+
+        });
+    </script>
+    }

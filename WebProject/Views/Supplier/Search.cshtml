@@ -1,0 +1,78 @@
+﻿@model WebProject.Models.SupplierViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+<div>
+    <h2>Search Supplier</h2>
+    <form method="post">
+        <table>
+          
+            <tr>
+                <td>@Html.LabelFor(s => s.Name)</td>
+                <td>@Html.TextBoxFor(s => s.Name, Model.Name)</td>
+                <td>@Html.ValidationMessageFor(s => s.Name)</td>
+
+            </tr>
+
+            
+            <tr>
+                <td>@Html.LabelFor(s => s.Email)</td>
+                <td>@Html.TextBoxFor(s => s.Email, Model.Email)</td>
+                <td>@Html.ValidationMessageFor(s => s.Email)</td>
+            </tr>
+
+
+            <tr>
+                <td>@Html.LabelFor(s => s.Contact)</td>
+                <td>@Html.TextBoxFor(s => s.Contact, Model.Contact)</td>
+                <td>@Html.ValidationMessageFor(s => s.Contact)</td>
+            </tr>
+
+
+         
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Search" /></td>
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h2>@ViewBag.Message</h2>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+    @{
+        Html.RenderPartial("~/Views/Shared/Supplier/_SupplierDetails.cshtml", Model);
+    }
+</div>

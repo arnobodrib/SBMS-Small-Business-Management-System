@@ -1,0 +1,58 @@
+﻿@model WebProject.Models.ProductViewModel
+
+<table>
+    <tr>
+        <td>SL</td>
+        <td>CategoryId</td>
+        <td>Code</td>
+        <td>Name</td>
+        @*<td>UnitPrice</td>*@
+        <td>Recorder_Level</td>
+        <td>Description</td>
+    </tr>
+
+    @{
+        int i = 1;
+    }
+
+    @foreach (var product in Model.products)
+    {
+        <tr class="Search">
+            <td>@(i++)</td>
+            <td>@product.CategoryId</td>
+            <td>@product.Code</td>
+            <td>@product.Name</td>
+            @*<td>@product.UnitPrice</td>*@
+            <td>@product.Recorder_Level</td>
+            <td>@product.Description</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Product", new { Id = product.Id }, null)</td>
+            <td>@*@Html.ActionLink("Delete", "Delete", "Product", new { Id = product.Id }, null)*@</td>
+        </tr>
+    }
+</table>
+
+@section MyScript{
+    <script>
+        $(document).ready(function () {
+
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searhText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+
+                    if (!Contains($(this).text().toLowerCase(), searhText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+
+            });
+
+        });
+    </script>
+    }

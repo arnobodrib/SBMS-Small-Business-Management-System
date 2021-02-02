@@ -1,0 +1,63 @@
+﻿@model WebProject.Models.CategoryViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+<div>
+    <h2>Update Category</h2>
+    <form method="post">
+        <table>
+            <tr>
+                <td>@Html.LabelFor(c => c.Code)</td>
+                <td>@Html.TextBoxFor(x => x.Code, Model.Code)</td>
+                <td>@Html.ValidationMessageFor(c => c.Code)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Name)</td>
+                <td>@Html.TextBoxFor(x => x.Name, Model.Name)</td>
+                <td>@Html.ValidationMessageFor(c => c.Name)</td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Update" /></td>
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h2>@ViewBag.Message</h2>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+    @{
+        Html.RenderPartial("~/Views/Shared/Category/_CategoryDetails.cshtml", Model);
+    }
+</div>
+
+@section MyScript
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

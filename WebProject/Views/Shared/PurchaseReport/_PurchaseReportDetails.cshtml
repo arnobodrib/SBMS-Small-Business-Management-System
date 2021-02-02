@@ -1,0 +1,34 @@
+﻿
+@model WebProject.Models.PurchaseReportViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>AvailableQty</th>
+        <th>CP</th>
+        <th>MRP</th>
+        <th>Profit</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+    @foreach (var purchaseReport in Model.PurchaseReport)
+    {
+        <tr>
+            <td>@(i++)</td>
+            <td>@purchaseReport.Date</td>
+            <td>@purchaseReport.Code</td>
+            <td>@purchaseReport.Name</td>
+            <td>@purchaseReport.Category</td>
+            <td>@purchaseReport.Availableqty</td>
+            <td>@purchaseReport.CP</td>
+            <td>@purchaseReport.MRP</td>
+            <td>@purchaseReport.Profit</td>
+
+
+        </tr>
+    }
+
+</table>

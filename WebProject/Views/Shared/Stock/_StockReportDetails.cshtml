@@ -1,0 +1,44 @@
+﻿
+@model WebProject.Models.StockViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        @*<th>Date</th>*@
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>ReOrderLevel</th>
+        <th>ExpireDate</th>
+        <th>OpeningBalance</th>
+        <th>In</th>
+        <th>Out</th>
+        <th>ClosingBalance</th>
+    </tr>
+    @{
+            int i = 1;
+        }
+        @foreach (var stock in Model.StockReport)
+        {
+    <tr>
+        <td>@(i++)</td>
+        @*<td>@stock.PurchaseDate</td>*@
+        <td>@stock.Code</td>
+        <td>@stock.Name</td>
+        <td>@stock.Category</td>
+        <td>@stock.ReorderLevel</td>
+        <td>@stock.ExpireDate</td>
+        <td>@stock.OpeningBalance</td>
+        <td>@stock.Inqty</td>
+        <td>@stock.Out</td>
+        <td>@stock.ClosingBalance</td>
+
+
+
+    </tr>
+        }
+
+</table>
+
+
+
+

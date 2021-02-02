@@ -1,0 +1,247 @@
+﻿@model WebProject.Models.PurchaseViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title" style="background-color:teal; padding: 7px; margin-bottom: 20px; color:white"><b>Purchase Header</b></div>
+            </div>
+            <div class="panel-body">
+
+                <div class="col">
+                    @*<div class="col-md-6">*@
+                    <div class="form-group row">
+                        <a href=""></a>
+                        @Html.LabelFor(c => c.Date, "Date *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            <input id="itemDate" type="date" name="Date">
+                            @*<input id="Date" type="date" name="Date" value="@Model.Date" required>*@
+                        </div>
+                        <div class="col-md-4">
+                            @Html.ValidationMessageFor(c => c.Date)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(c => c.InvoiceNo, "Invoice No *", new { @class = "control-label col-md-4" })
+                        <div class="col-md-4">
+                            @*@Html.TextBoxFor(c => c.InvoiceNo, null, new { @class = "form-control" })*@
+                            <input id="itemInvoiceNo" type="text" name="InvoiceNo">
+                        </div>
+                        <div class="col-md-4">
+                            @Html.ValidationMessageFor(c => c.InvoiceNo)
+                        </div>
+                    </div>
+                    @*</div>*@
+                <div class="form-group row">
+                    @Html.LabelFor(c => c.SupplierId, "Supplier Id *", new { @class = "control-label col-md-4" })
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelectListItems, "--Select--", new { id = "SupplierId" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ValidationMessageFor(c => c.SupplierId)
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title" style="background-color:teal; margin-bottom: 20px; color:white; padding: 7px; ">Purchase Details</div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            @Html.Label("itemCategoryID", "Category ID *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @Html.DropDownList("itemCategoryID", null, "--Select--", null)
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemProductID", "Product ID *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("ProductID", null, new { @class = "form-control" })*@
+                                @Html.DropDownList("itemProductID", null, "--Select--", null)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemProductCode", "Product Code ", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("ProductCode", null, new { @class = "form-control" })*@
+                                <input id="itemProductCode" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemAQuantity", "Available Quantity ", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("AQuantity", null, new { @class = "form-control" })*@
+                                <input id="itemAQuantity" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemMDate", "Manufactured date *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("MDate", null, new { @class = "form-control" })*@
+                                <input id="itemMDate" type="date" name="Date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemEDate", "Expired Date *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("EDate", null, new { @class = "form-control" })*@
+                                <input id="itemEDate" type="date" name="Date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            @Html.Label("itemQuantity", "Quantity *", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("Quantity", null, new { @class = "form-control" })*@
+                                <input id="itemQuantity" type="text" onkeypress='validate(event)' />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemUPrice", "Unit Price (TK)", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("UPrice", null, new { @class = "form-control" })*@
+                                <input id="itemUPrice" type="text" onkeypress='validate(event)' />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemTPrice", "Total Price (TK)", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("TPrice", null, new { @class = "form-control" })*@
+                                <input id="itemTPrice" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemPUPrice", "Previous Unit Price (TK)", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("PUPrice", null, new { @class = "form-control" })*@
+                                <input id="itemPUPrice" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemPMRP", "Previous MRP (TK)", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("PMRP", null, new { @class = "form-control" })*@
+                                <input id="itemPMRP" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.Label("itemMRP", "MRP (TK)", new { @class = "control-label col-md-4" })
+                            <div class="col-md-4">
+                                @*@Html.TextBox("MRP", null, new { @class = "form-control" })*@
+                                <input id="itemMRP" type="text" onkeypress='validate(event)' disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.Label("itemRemarks", "Remarks ", new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextArea("itemRemarks", null, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-md-offset-4">
+                    <input type="button" value="Add" id="AddButton" class="btn btn-info onclick=" JavaScript:return submitValidate(); />
+                </div>
+                <div class="col-md-12">
+                    @if (ViewBag.Message != "")
+                    {
+                        <h3>
+                            <b>@ViewBag.Message</b>
+                        </h3>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title" style="background-color:teal;  padding: 7px; margin-bottom: 20px; color:white">Added Purchase Details Items</div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-border table-hover table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <td>SL</td>
+                            <td>Products (Code)</td>
+                            <td>Manufactured Date</td>
+                            <td>Expired Date </td>
+                            <td>Quantity</td>
+                            <td>Unit Price</td>
+                            <td>Total Price</td>
+                            <td>MRP</td>
+                            <td>Remarks</td>
+                        </tr>
+                    </thead>
+                    <tbody id="purchaseDetailsTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4">
+        <input id="submitButton" type="submit" value="Submit" />
+    </div>
+}
+
+@section MyScript{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/PurchaseCreate.js"></script>
+    <script src="~/Scripts/ProjectScripts/Purchase/Checking.js"></script>
+
+    <script>
+        
+        $("#itemInvoiceNo").change(function () {
+
+        var invo = $("#itemInvoiceNo").val();
+
+        var jsonRequesData = { invo: invo };
+
+        $.ajax({
+            url: "/Purchase/CheckInvoiceNo",
+            type: "POST",
+            data: jsonRequesData,
+            success: function (data) {
+                if (data.invo != "") {
+                        alert("Invoie Number Used Before");
+                        $("#submitButton").prop("disabled",true);
+                    }
+                    else if (data.invo == "") {
+                        $("#submitButton").prop("disabled",false);
+                    }
+            },
+            error: function () {
+                alert("Ajax Requiest Error");
+            }
+        });
+
+
+    });
+
+    </script>
+}
